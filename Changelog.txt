@@ -1,0 +1,642 @@
+=== Version 3.1.25 ===
+Released: November 29th, 2020
+
+Hotfix (r:12302020): Fix for Custom Whispers not being sent.
+
+Bug Fixes:
+- Incorrect variable declared when sending customized whisper messages.
+
+Quality of Life:
+- The default Alert Guild message for Lottery Events has been modified. Changed the "Win Chance" string to "Chance to draw a Winner"
+
+
+=== Version 3.1.24 ===
+Released: November 1st, 2020
+
+New Features:
+- You now have the ability to send additional, customizable, messages to Players when they request info about your Events. This feature can be found under the "Whispers" tab of the config menu.
+- Date Format can now change to either display as MM/DD/YY (default), or DD/MM/YY. This option is found under General Options. You can change this whenever you like.
+
+Bug Fixes:
+- Copying Raffle Event Profiles between Characters fixed.
+- Fixed the Carry Over feature for Lottery Events.
+- Advanced Draw Events with Guaranteed Winners should no longer take ages to Assign Tickets.
+- Potential fix for Advanced Draw Events getting hung on Assigning Tickets.
+
+Quality of Life:
+- Added additional information sent to Players upon their request for Lottery Events.
+- When attempting to transfer Event data between characters, detailed information is sent to chat about any mismatched config settings.
+- Added missing headers to various config tabs.
+- When copying profiles, you'll receive a message in chat when successful.
+- List of Linked Guilds for Multi-Guild Events will only show if two or more Guilds are linked.
+- Renamed "No Guild Cut" Lottery setting to "No Winner, No Cut"
+- Renamed "Advanced Ticket Draw" General setting to "Advanced Draw"
+- Adjusted certain Frame Strata so text won't appear behind buttons.
+
+
+=== Version 3.1.23 ===
+Released: October 17th, 2020
+
+Hotfix (r:10172020): Fix for creating new Events.
+
+Bug Fixes:
+- Updated UI to WoW 9.0.1 API Changes.
+- The Whisper System will now correctly tell the Player correct Raffle Prizes.
+- Fixed Event Transfer detection system not informing the player when it detects a mismatch between two, or more, events where data could've been transferred.
+
+Quality of Life:
+- You'll now receive a chat message when the Mail Scanning system skips a mail with an incorrect Subject.
+- Attempting to view Player Ticket Numbers will prompt you that it's not possible with Advanced Ticket Draw enabled.
+- Clicking the Abort Roll button while Event Draw is in progress will properly hide the confirmation button if it's already visible.
+- Due to 9.0.1 API changes, updated backwards compatibility with WoW Classic.
+
+
+=== Version 3.1.22 ===
+Released: May 27th, 2020
+
+New Features:
+- Round Values replaces the Round Jackpot config option, you can now round certain values either Up or Down; the Jackpot is never rounded. This option is changed under Lottery Event Settings.
+- When creating new Raffle Events, prizes are now displayed in the Confirm button tooltip.
+- You can now abort Event Draws with the command:
+	/glr abort
+- If your Raffle Events have less than three Prizes, you now have the option to Add Prizes (up to a total of three) without having to recreate the Raffle Event. A message is sent to Guild upon successfully adding Prize(s).
+- When setting up new Raffle Events, you can now use the following variables:
+	%raffle_total	: The Total value of your new Raffle Event Ticket Sales.
+	%raffle_half	: Half of the total value of the Raffle Event Ticket Sales.
+	%raffle_quarter	: A Quarter of the total value of the Raffle Event Ticket Sales.
+- With the addition of Raffle Event variables, you can now type in any numeric number to set a monetary value as a Prize without having to enable the "Allow Invalid Items" checkbox.
+	Ex: 10000 becomes 10,000 gold. Whereas 1000.5084 becomes 1000 gold 50 silver, and 84 copper.
+- Please be aware the new variables for your Raffle Events do not take each other into account, for instance if you have both First and Second place set to the Total Value of Ticket Sales (2x the Ticket Value in prizes), it's up to you to make sure you have enough to pay out!
+- Lottery Events now have a new option: Player Rollover
+	When your Event completes with no one winning anything, all Player Names entered into that Event are carried over into the next Event with zero starting Tickets.
+
+Bug Fixes:
+- Fix for the Status Command not working.
+- Giveaway feature updates the Names Available for Entry properly.
+- Fix for the Mail Scanning feature returning incorrect values, also a minor bug when sending Confirmation Mails was fixed.
+- Parsing error fixed with Event Draws not sending the full message at the beginning.
+- Fixed error when running Lottery Events one after the other (before doing a /reload).
+- Hopefully no more duplicate messages during Event draws.
+- The Abort Roll button will now stay shown when opening and closing the interface while a Event Draw is active.
+- Certain Raffle values weren't being declared correctly when starting a new Raffle, fixed.
+- Fixed error that occurred when setting the Second Place Profile value.
+- The "?lottery <target>" and "?raffle <target>" commands work again, fixed error with how it was parsing the message.
+- When hosting both a Lottery and Raffle at the same times, using the Alert Guild feature will work correctly (Event Date wasn't being sent correctly).
+- Fixed the Edit Raffle Players button text appearing in the middle of the screen.
+- Previewing Custom Messages will display the correct Time Format for Lottery Events.
+- Until it has completed the initialization process, disabled the - / + buttons for adding and removing Player Tickets to prevent it from erroring out in some instances.
+- The Abort Roll button will no longer disappear while a Draw is in progress or from switching between Lottery/Raffle displays.
+- In the event you have to restart your client or the game crashes during a Event Draw, a message will be sent to Guild Chat upon logging in.
+- No longer possible to make Raffle Events with zero Maximum Tickets
+
+QoL Changes:
+- When running Advanced Ticket Draw Lottery Events, the Ticket Number Range info will display the correct number of Tickets that are generated on Event Draw (to bring it in line with the Win Chance changes).
+- Status Command added to Config Menu, along with other slash commands.
+- Giveaway feature now includes a "Total Tickets to Giveaway" line, telling you the amount that'll be given.
+- Updated the help info that's printed to chat when entering a incorrect command.
+- Both Second Place and the Guilds Cut for Lottery Events no longer have a prize if the Jackpot is less than 2 Copper.
+- The Tooltip information displayed on the Confirm button when starting a new Lottery will update automatically now (when moving your mouse out and back on to the Confirm button).
+- When starting a new Lottery Event, both the Guild and Second Place percentage (and takeaway) are displayed in the Tooltip information of the Confirm button.
+- While your Event is being drawn, certain buttons are disabled.
+- Updated certain strings used in Event Draws to bring them in line with other messages that have the GLR prefix.
+- Doing a fresh install will start you off with the correct Message settings (updated to reflect changes made in the past).
+- Event Ticket Price now capped at Player Gold Cap (10mil)
+- Values greater than 10mil are displayed as 9,999,999g 99s 99c and will report the actual value via tooltip information. This won't affect Event Draws as it only affects data displayed in the UI.
+- Previewing Custom Messages now formats currency values in a different color from the chat message color (only in preview though).
+- Updated list of Available Formats for Message Settings
+- Adjusted width of New Raffle Prize frame to accommodate changes to maximum displayed currency value.
+- Unchecking the Allow Invalid Items box for new Raffle Events will properly check any existing Prizes and remove those that are invalid.
+- Updated Donation Confirmation button tooltip info with new currency color scheme.
+- Renamed the "No Guild Cut on No Winner" Lottery Event setting to "No Guild Cut" to make room for the Player Rollover option (the description still states the 'on No Winner' part).
+- Change made to how the Export feature determines the Jackpot.
+- When first logging in, buttons like "Begin Lottery" or "Begin Raffle" are disabled until it has fully initialized.
+- Updated the private message string stating what to reply with to see Event info (changed it from "lottery" to "!lottery").
+- Giveaway can no longer be performed while Event Draw is active.
+- Due to file size limitations imposed by the game client, and to prevent your settings from being lost. Player Ticket Numbers from the Previous Event are no longer saved, only their Ticket Number Range.
+- Fix for the Export feature when having multiple Raffle Prize Winners.
+- Changed some of the logic behind the Event Draw process and how it aborts, this should result in a more fluid process.
+- Updated certain formatted values, resulting in numbers previously shown as 1000 to now show as 1,000
+
+
+=== Version 3.1.21 ===
+Released: April 23rd, 2020
+
+New Features:
+- You can now check the status of Events on Characters within the same Account by using the following command:
+		/glr status <name>
+	This will print to chat some basic info regarding any Active Events for the specified Character.
+Bug Fixes:
+- Error when checking for non-existing players inside your Guild fixed.
+- New Time Format should no longer cause errors when running Guild Alerts.
+- Giveaway Feature should be fixed, again.
+
+
+=== Version 3.1.20 ===
+Released: February 27th, 2020
+
+New Features:
+- Time Format: Set whether the time displayed in Guild Alerts and Ticket Info Messages sent to players is displayed as 24-Hour (default) or 12-Hour time.
+Bug Fixes:
+- The Mail Scanning feature should be fixed now. The Confirmation Mail feature had its logic changed and should work 100% of the time now.
+- Fix for running Advanced Lottery & Raffle draws.
+- For some reason Classic was not allowing players to edit the Detection Phrases, this is now fixed.
+- LibWho functionality removed until a workaround is found.
+QoL Changes:
+- Certain features are disabled until the addon has completed its initialization process. This is to prevent potential errors when using these features before your Guild Roster has finished updating.
+
+
+=== Version 3.1.19 ===
+Released: January 22nd, 2020
+
+Bug Fixes:
+- A call used to generate your Guild Roster (a core function for this AddOn) is deprecated and won't work for the next Expac on Retail. Though the new way to call it works just fine on Retail, appears it doesn't on Classic.
+
+
+=== Version 3.1.18 ===
+Released: January 21st, 2020
+
+Author's Note: v3.1.18 was re-uploaded to fix a minor bug.
+
+New Features:
+- Randomize your Giveaways! With the "Randomize Giveaway" option enabled, the people who receive a Ticket are selected at random.
+- Set your Lottery Events own Win Chance, you can find this under Event Settings. This setting only affects Advanced Events. Win Chance can be: 90%, 80%, 70%, etc, down to 10%. The Default setting is 50%. This option can only be changed while no Lottery Event is active and you have Advanced Events enabled.
+- Custom Command Detection: Set what should be looked for from players typing in Guild Chat or Whispers to respond to. EX: Adding "guildlottery" will cause anyone typing "!guildlottery" to trigger as though they typed "!lottery"
+- New slash commands:
+	/glr alert - Alerts your Guild to any active Events (same as clicking the "Alert Guild" button)
+	/glr command - Prints a list of available slash commands to the chat frame. Also triggered when a invalid slash command is detected.
+Bug Fixes:
+- Lottery values will no longer display anything less than 1 Copper.
+- Calendar Event creation fixed, again.
+- Lottery Events which guaranteed a winner were causing the display to blank all information, fixed.
+QoL Changes:
+- Updated TOC file for both the latest version of Retail & Classic.
+- When attempting to transfer your Event(s) between Characters, a message will appear in chat when the mod detects the incompatibility of the transfer.
+- If you're unable to speak in Guild Chat: Guild Alerts and Completing Events will no longer be possible. Doing Event Giveaways and Lottery Donations will complete but won't be announced.
+- In the unlikely event you're prevented from speaking in Guild Chat, any active Event Draws will be automatically aborted.
+- The Giveaway feature will no longer include a player as a potential entry if they already have the maximum number of allowed tickets.
+- With the addition of custom Lottery Win Chance for Advanced Events, a new Custom Alert Message variable was added. "%lottery_winchance" will now report what your Lottery Event Win Chance is.
+
+
+=== Version 3.1.17 ===
+Released: December 26th, 2019
+
+Author's Note:
+Huge thankyou to those helping to test the mod and reporting errors! Without your help updates wouldn't happen.
+
+Bug Fixes:
+- Doing a fresh install of the mod would throw a one-time error upon logging in declaring a table as nil. This is now fixed.
+- The Giveaway feature should now properly work under all conditions (when giving tickets By Rank or to Everyone).
+- Calendar Event creation was disabled accidentally for everyone (and unable to change). You should be able to create Calendar Events now.
+QoL Changes:
+- Blizzard removed the ability for mods to utilize the /who function automatically without user interaction; therefore automatic Login Messages will only be sent to users in your Guild (disabled for users outside your Guild for Multi-Guild Events).
+
+
+=== Version 3.1.16 ===
+Released: November 9th, 2019
+
+Bug Fixes:
+- The Donation process wasn't properly working if your Lottery Event guaranteed a winner, this is now fixed.
+
+
+=== Version 3.1.15 ===
+Released: October 30th, 2019
+
+Bug Fixes:
+- Completing Advanced Ticket Draws with a Second Place Winner will now properly save information.
+- Giveaway Feature wasn't allowing the option to give Everyone tickets, this should now fixed.
+- The %previous_jackpot variable was incorrectly reporting the Second Place winnings from Previous Events.
+- A certain variable was not being called correctly, this has been fixed.
+- Minor tweak to the Event Creation process to squash a bug.
+- Potential fix for users reporting the mod as unusable when using it in another language.
+QoL Changes:
+- Some changes were made to the way local variables are called.
+- New Chat Command "/glr checkinvalid" will cause the mod to check for any invalid entries you may have in your Guild (due to people leaving or being kicked). This process is already done automatically upon Login or doing a Reload.
+- The Lottery Donation messages displayed in Guild Chat will now say both the Total and Takeaway portions of the Jackpot.
+- The Confirmation button tooltip for Lottery Donations was changed to include the Silver, and Copper amounts.
+- New Tooltip added to the Confirmation button for creating new Lottery Events. This will display the starting Jackpot based on the amount entered and, if available, the carried over amount from your previous Lottery Event.
+- Updated LibWho Library file to v2.0.178
+
+
+=== Version 3.1.14 ===
+Released: September 27th, 2019
+
+Bug Fixes:
+- Dragging the Minimap Icon works as normal again.
+QoL Changes:
+- Updated Retail version to version 8.2.5 of WoW
+- Changed the minimap chat command that toggles the visibilty of it from "/glr minimap" to "/glr minimap toggle"
+- Added chat command to change the minimaps coordinates. Ex: "/glr minimap (-10,50)" The parentheses and comma between numbers are required for this to work.
+- When creating new Events, leaving a currency field blank will cause a notification to appear. Having more than one currency field blank will display a generic "All Currency Fields Must Be Zero or Higher".
+- Creating Event Profiles with a Starting Amount and Ticket Price with a value of 1.0583 will translate to One Gold, Five Silver, and Eighty-Three Copper accordingly (can be any value). Entering values less than one copper into the profile settings will round up by one copper.
+- Event Profiles for Starting Amount and Ticket Price can be set to zero.
+- Scanning the Mailbox when Events have Ticket Price values less than 1 Gold will give the correct number of Tickets.
+
+
+=== Version 3.1.13 ===
+Released: September 23rd, 2019
+
+Author's Note:
+Special thanks goes out to those who've helped beta test the mod. If you're interested in getting involved with testing features, would like to submit bug reports, or have suggestions on features; please get ahold of me on Discord: https://discord.gg/H7tGQjv
+
+New Features:
+- Compatibility with Classic is complete. The configuration option for creating Calendar Events is disabled while on Classic.
+- Three new variables have been added to the custom Guild Alert Messages, "%lottery_guild", "%lottery_winamount" and "%lottery_total".
+- %lottery_guild : outputs the Jackpot value your Guild will receive upon Event completion.
+- %lottery_winamount : outputs the Jackpot value the winner will receive upon Event completion. (this is the old "%lottery_gold" variable)
+- %lottery_total : outputs the total Jackpot value before the Guild Cut.
+- Added framework for saving debug information.
+QoL Changes:
+- Two custom variables for Guild Alert Messages have changed. Both "%lottery_gold" and "%raffle_gold" have been changed to "%lottery_winamount" and "%raffle_total". These changes are NOT retroactive so you'll need to change them yourself in the Message Option settings.
+- The %previous_jackpot variable will no longer show the Second Place value of the previous Events Jackpot if no one won. In the event of no one winning it'll now default to showing the full Jackpot value.
+
+
+=== Version 3.1.12 ===
+Released: July 27th, 2019
+
+- TOC Version Updated to 8.2.0
+
+
+=== Version 3.1.11 ===
+Released: June 13th, 2019
+
+Bug Fixes:
+- Fix for Advanced Lotteries not announcing second place winners. No data was lost when this occurred, it simply wasn't announced.
+
+
+=== Version 3.1.10 ===
+Released: April 10th, 2019
+
+Bug Fixes:
+- Player Ticket Information frame should properly update when switching between Lottery & Raffle Event details.
+- Removed whisper message that would tell a player their ticket range for Advanced Event Draws.
+- If more than one person in the same Guild have this AddOn installed, only those with active Events should respond to players requesting information via Guild Chat.
+QoL Changes:
+- A Last Updated line has been added to the Giveaway feature for Multi-Guild Events to inform you of the last time Roster info was updated. If "No Data Available" is shown, you'll need to log on to a character in that guild to update it.
+- Certain configuration options now have a notice appear when changed, allowing you to ReloadUI by clicking Accept.
+- Opening the Donation frame now automatically sets the first box as active.
+- Pressing the Escape key with the Donation frame active will now properly exit from it instead of going to the next portion.
+- '/glr minimap' will now toggle the visibility of the Minimap Icon.
+- Minimap Icon placement has been greatly improved!
+- Minimap Icon can now be placed wherever on your screen by Shift + (hold) Left Click and dragging the icon to where you'd like.
+- Minimap Icon tooltip information will now properly hide while being moved.
+- The Min/Max slider settings for the Minimap Icon are now dynamic and change based on the Minimap size (manually moving the Icon will override the slider settings).
+
+
+=== Version 3.1.09 ===
+Released: March 16th, 2019
+
+Bug Fix:
+- Fix for graphical error related to the Player Ticket Information frame when scanning mail for potential entries.
+
+
+=== Version 3.1.08 ===
+Released: March 7th, 2019
+
+Bug Fixes:
+- The Scan Mail feature wasn't applying a value to allow for Players to receive ticket information via Whisper. This will be fixed retroactively as Players receive ticket information.
+QoL Changes:
+- Optimization improvements to how the UI loads information. Users should see improvements to how quickly the GLR UI loads after the first time you've opened the AddOn.
+- Key Modifiers have been added to the -/+ buttons when changing a Players Ticket amount. Holding down the Shift key will change the amount by five. Holding down the Control key while increasing a Players Ticket amount will count the ticket(s) as free. Holding down both the Control and Shift key while decreasing the Players Ticket amount will lower their amount all the way to one.
+- It's now possible to set Guild and Second Place percentage values as not whole numbers (ie: 10.5 for Guild Cut will convert 100 gold into 10 gold and 50 silver).
+
+
+=== Version 3.1.07 ===
+Released: February 9th, 2019
+
+New Features:
+- Amount of Player Tickets can now be increased/decreased with the click of a button from the main UI by clicking the appropriate -/+ buttons from within the Player Ticket Information frame. Player Tickets can't be decreased to zero with this method, this is to prevent you from incorrectly removing a Player from your Event. Number of Player Tickets is changed by increments of one.
+- You now have the option to send confirmation mails to those that enter into your Events when scanning the mailbox. Confirmation mails will only be sent if the price per ticket and amount of money received are both greater than 30 copper (cost of mail).
+- Customization for Subject lines when using the Scan Mail feature. The default detection phrases can't be removed or changed. You can find them under Event Settings.
+Bug Fixes:
+- Fixed loophole when creating Lottery Events that would allow for users to set the Second Place and Guild Cut total at over 100% of the Jackpot.
+- Fix for players hosting Raffles with Battle Pets as the prize. Shoutout to Arkaan of Guild Roster Manager for the fix!
+QoL Changes:
+- "Create Calendar Events" string changed to "Calendar Events" to allow for proper spacing with the other configuration texts.
+- Secured more UI Elements (removed from global namespace).
+
+
+=== Version 3.1.06 ===
+Released: February 3rd, 2019
+
+Bug Fixes:
+- String parse error for Lottery Events that round the Jackpot fixed, again.
+QoL Changes:
+- Framework to allow for critical updates changed to catch those that update from before v3.1.03
+
+
+=== Version 3.1.05 ===
+Released: February 1st, 2019
+
+Bug Fixes:
+- Hotfix for issue caused by Lottery Events that Round the Jackpot and players requesting their Ticket Information with the !lottery command.
+
+
+=== Version 3.1.04 ===
+Released: January 25th, 2019
+
+New Features:
+- Export Feature changed to allow for multiple Events to be easily displayed in a Spreadsheet. You can configure these settings in the Options > Export menu.
+- Advanced Ticket Draw: When creating Events with this feature active players will no longer receive ticket numbers upon purchasing, or being given, tickets. Ticket numbers will instead be generated at the moment of Event Draw along with a Winning Ticket number. Win chance for Lottery Events that don't guarantee a winner is still 50%.
+Bug Fixes:
+- %previous_jackpot for Custom Guild Alert Messages should work properly again.
+- The "Invalid Items" option for your Raffle Profile is fixed.
+- Multi-Guild Event table is now properly generated upon login when switching between characters when one is hosting a Multi-Guild Event.
+QoL Changes:
+- Framework setup to allow for critical updates to be released without breaking the AddOn. In the event that these updates are pushed, you will need to restart WoW to continue use of the AddOn. This is one of those updates!
+- Sliders will no longer appear if their's no information to display or no information to scroll through.
+- "Number of Unused Tickets" string changed to "Ticket Pool".
+- "Players & their Total Tickets" string changed to "Player Ticket Information".
+- Viewing Player Tickets numbers and the "Purchased: %amount Tickets" string changed to "Tickets: %amount" to reflect potential Free Tickets a player might have.
+- "Player Name: %User" string changed to "Name: %User" for the View Player Tickets frame.
+- Viewing Player Ticket Information is not possible with Advanced Ticket Draw enabled.
+- When viewing Player Tickets, their name is now color coded based on their class.
+- Color correction for displayed player names that're classed as Monk.
+- When starting a new Event the Event Name field will automatically gain focus.
+- Player A who requests information about Player B with the "?lottery" or "?raffle" command will now cause the AddOn to attempt to contact Player B immediately. If the AddOn is unable to message Player B, then it will attempt to contact them again upon relogging.
+- Secured the Add/Edit Player Info functions (removed from global namespace).
+- "Guild Lottery" and "Guild Raffle" have been added as valid Subject texts for your Events when scanning the Mailbox.
+- Removed incorrect spacing when reporting Guilds take of Lottery Jackpot.
+- Full Ticket Information option is disabled automatically, and can't be enabled, with Advanced Ticket Draw enabled.
+
+
+=== Version 3.1.03 ===
+Released: December 30th, 2018
+
+Bug Fixes:
+- Previewing Custom Messages should work for everyone again.
+QoL Changes:
+- %lottery_tickets and %raffle_tickets has been modified to report both the Tickets Sold and Tickets Given Away for Custom Guild Alert Messages.
+
+
+=== Version 3.1.02 ===
+Released: December 20th, 2018
+
+Bug Fix:
+- Fix for new saved variable when launching the game.
+
+
+=== Version 3.1.01 ===
+Released: December 19th, 2018
+
+Bug Fixes:
+- Fix to creating Calendar Event Announcements.
+- Fix to switching between Lottery and Raffle Events in the Giveaway section.
+
+
+=== Version 3.1.0 ===
+Released: December 14th, 2018
+
+QoL Changes:
+- Giveaway feature has been overhauled and is easier on your computer, especially when working with large Guild(s).
+- Slight changes to the messages sent to Guild when performing Event draws to accurately reflect the recent change to how values are represented.
+- You can no longer start a Lottery draw if the Jackpot is zero.
+- Baseline fuctionality for all WoW supported Languages has been implemented.
+- TOC version update to 8.1.
+
+
+=== Version 3.0.81 ===
+Released: November 9th, 2018
+
+New Features:
+- Minimap Icon information has been added for your Lottery & Raffle Events. In the event that you're hosting one, or both, type of Event the Minimap Icon will now display the name you gave the Event along with: Date, Tickets Sold, and Tickets Given.
+- Minimap Icon functionality has been expanded, you can now Control + Left Click to send Guild Alerts.
+Bug Fix for:
+- Export functionality has been fixed for those that hosted Lottery events with no Second Place winner.
+- It's no longer possible to start a Lottery draw when the Jackpot is zero.
+QoL Changes:
+- The rest of the UI has been overhauled to the new clean look.
+- The Giveaway Feature has been overhauled and should no longer cause lag while giving tickets away; I've also included a progress bar which will tell you when it has completed the process. Their will however be the initial lag (if lots of players received tickets) once the AddOn has given tickets away as it updates the UI to display this new information.
+- The 'Ticket Number Range' and the ticket range that's printed out to Guild chat for Lottery Events has been updated to correctly reflect the Ticket Range when the AddOn draws a winning ticket number. Win chance for Lottery Events that don't guarantee a winner is still 50%.
+- The list of players you're able to edit has received a fix to the placement of the displayed text.
+- Player Class color has been extended to the Add/Edit Player interfaces.
+
+
+=== Version 3.0.8 ===
+Released: November 1st, 2018
+
+New Features:
+- You can now enter individual Player's to receive Free Tickets. This is done by checking the 'Free' box when normally entering Players into your Events. This option is not available for Players who enter by mail.
+- You now have the option to disable automatic messages sent upon login. Players will still receive automatic messages when entered into Events (if you're both online when entered and the Tickets received aren't Free).
+Bug Fix for:
+- Potential fix for the AddOn mistakenly removing entries when it shouldn't.
+QoL Changes:
+- The UI has been fixed and will now properly display the new border color.
+- Players who receive Free Tickets will no longer get the automated Ticket Info message upon the Host logging in. Users may still receive this information with the relevant detection phrase (in the previous update this only applied to players who received Free tickets from the Giveaway Feature, this now applies to all forms of entry).
+- Second Place and Guild Amount percentage is now displayed in the tooltip.
+
+
+=== Version 3.0.720 ===
+Released: October 31st, 2018
+
+Bug Fix for:
+- Populating the Roster Table incorrectly.
+QoL Changes:
+- Data for Ticket Type is now saved to each character (whether the ticket was Sold or Given away).
+- If a player no longer exists in your Guild (either due to name change or leaving the Guild) that entry will be removed.
+- Players that receive Free Tickets will no longer receive a notification about their entry unless they purchase additional tickets or preform the relevant detection phrase (!lottery or !raffle).
+
+
+
+=== Version 3.0.711 ===
+Released: October 30th, 2018
+
+Bug Fix for:
+- (hotfix) Update function throwing error when populating the Guild Roster table.
+
+
+=== Version 3.0.710 ===
+Released: October 28th, 2018
+
+Bug Fixes for:
+- Donations throwing error.
+- Cross Faction Multi-Guild Events should properly work!
+QoL Changes:
+- The UI has had a overhaul to give it a cleaner look.
+- Player Names listed in the main UI are now color coded by their Class.
+- The Number of Unused Tickets frame will no longer show unless you have Unused Tickets.
+- New commands to bring you to specific parts of the Configuration menu. They are:
+	/glr events
+	/glr profile
+	/glr messages
+	/glr giveaway
+
+
+=== Version 3.0.701 ===
+Released: October 25th, 2018
+
+Bug Fix for:
+- Compatibility issue with the AddOn: All The Things
+
+
+=== Version 3.0.7 ===
+Released: October 24th, 2018
+
+New Features:
+- Round Jackpot. Lottery Events can now have the Jackpot, Second Place, and the Guilds Cut rounded to the nearest Gold value. This option is changed under the Events Configuration menu.
+- %previous_winner and %previous_jackpot can now be used for Custom Lottery Guild Alert messages.
+Bug Fix for:
+- Giveaway Feature wasn't reporting to Guild what ranks were eligible for tickets, this has been fixed.
+QoL Changes:
+- The Export Feature has been tweaked to show the Total Jackpot (instead of the Jackpot after your Guilds Cut). It will now show how much a person won as well as showing how much your Guild received.
+- The available formats for custom messages has been moved (cleaned it up a bit).
+- Events now allow for Silver and Copper amounts.
+
+
+=== Version 3.0.663 ===
+Released: October 16th, 2018
+
+Bug Fix for:
+- Hosting Raffle Events. Variable was incorrectly being set to false.
+
+
+=== Version 3.0.662 ===
+Released: October 14th, 2018
+
+Bug Fix for:
+- Missing Variable throwing errors when updating from older versions.
+
+
+=== Version 3.0.661 ===
+Released: October 11th, 2018
+
+Bug Fix for:
+- Completing Events. Variable wasn't being declared before the Update function.
+
+
+=== Version 3.0.66 ===
+Released: October 10th, 2018
+
+New Feature:
+- Export Previous Event Data. The AddOn will now save Event data after completing a Draw. Export functionality is meant to work with Microsoft Excel and its Data > Text to Columns feature. This feature can be executed through a new slash command: '/glr export <EventType>' or through the Event Configuration Menu.
+Bug Fixes for:
+- Mail Scanning incorrectly parsing the senders name for those in Cross-Realm Guilds.
+- Raffle Event Dates not being sent through the Alert Guild System.
+QoL Changes:
+- User Interface will now properly update displayed information for Events where all tickets were given away.
+
+
+=== Version 3.0.65 ===
+Released: October 7th, 2018
+
+New Features:
+- 'No Guild Cut on No Winner' can now be set in the Lottery Event Settings. When enabled, if no one wins the Jackpot and Second Place then the Guild will not receive a portion of the Jackpot.
+- Improved Giveaway! You now have the ability to give free tickets away to specific players in your Guild based on your personal settings. These can range from everyone in your Guild to one or more ranks and up to 28 Days since they last logged on.
+Bug Fixes for:
+- Guild Alert math correction for Lottery Jackpot.
+
+
+=== Version 3.0.641 ===
+Released: October 3rd, 2018
+
+Bug Fixes for:
+- Cross-Faction Multi-Guild Events.
+- Class Colors throwing errors on clients running a non-localized version of the AddOn.
+- Data Transfer duplicating information on Transfer.
+QoL Changes:
+- The Cancel Event button will no longer print to chat that the Checkbox is required when you're not running the relevant Event.
+- %raffle_prizes is now a valid variable for your Guild Alert messages.
+
+
+=== Version 3.0.64 ===
+Released: October 1st, 2018
+
+New Features:
+- You now have the ability to transfer Event data from one character to another (under the same account on the same computer). This is done from the Transfer tab in the Options menu.
+- Players can now receive ticket information about other entries in your event with the ?lottery or ?raffle command (through whisper or Guild chat). This feature does allow for partial names to be sent, however if multiple possible entries are found you will have to be more specific when requesting information.
+QoL Changes:
+- Did some minor tweaks to some text strings.
+
+
+=== Version 3.0.63 ===
+Released: September 27th, 2018
+
+Rework of the Multi-Guild structure to allow for guilds of the same name (but different faction) to exist.
+Minor bug fixes with the Event Draw system.
+When hosting a Multi-Guild event, the AddOn should now whisper people right away when you add them to your Event (assuming they're on when added).
+
+
+=== Version 3.0.621 ===
+Released: September 26th, 2018
+
+Hotfix for issue with completing Lottery events.
+
+
+=== Version 3.0.62 ===
+Released: September 24th, 2018
+
+First pass at a system for the mod to check if others in your Guild have this AddOn. If you and others in your Guild have this AddOn, you will be notified if someone has a different version than yours.
+If more than one person in your Guild has this AddOn, people in your Guild should now only receive information from the person hosting Events. This only affects players who type "!lottery" or "!raffle" into the Guild chat channel. In the event that more than one person are hosting Events, then people will receive information from anyone hosting.
+New variable for your Custom Guild Alerts: %version will now return the current version of the AddOn.
+Did some QoL to the Custom Guild Alert system: Leaving a message blank will prevent it from being sent.
+You can now inverse the announcement order for Raffle Winners. This is done in the Raffle settings under the Events Configuration menu.
+
+
+=== Version 3.0.61 ===
+Released: September 20th, 2018
+
+When updating to this version, you will need to restart WoW before you can run the Draw for your Events.
+Fix for the Custom Message Preview tab in the Configuration Menu. Also did some QoL to the Custom Messages, you will no longer be able to use %raffle variables in the Custom Lottery message tab (and vice versa). The only exception is the tab for both Lottery & Raffle Custom Messages.
+New variable for the Custom Lottery Message tab - %lottery_tickets will now return the amount of tickets sold (does not include tickets given away).
+The entire Event Draw system has been localized (you will no longer be able to do a /run script to trigger it).
+
+
+=== Version 3.0.6 ===
+Released: September 19th, 2018
+
+New Feature! You can now customize the Alert Guild messages. This is done in the Messages tab of the Configuration menu. Several variables have been provided, such as %lottery_price will return the cost of your Lottery Tickets. You can also copy existing Message Profiles from your other characters. This is done under the Profiles tab of the Configuration menu.
+
+
+=== Version 3.0.53 ===
+Released: September 16th, 2018
+
+Fix for issue with players that have other AddOns installed which would prevent people from receiving event information. You will now have to use '!lottery' or '!raffle' to receive the respective event information.
+Changed the Alert Guild system so the messages sent will be shown in order (was shown out of order sometimes if you have certain AddOns installed).
+
+
+=== Version 3.0.52 ===
+Released: September 11th, 2018
+
+Final hotfix to the Alert Guild system (apparently v3.0.51 didn't completely fix it).
+
+
+=== Version 3.0.51 ===
+Released: September 11th, 2018
+
+Hotfix for issue with the Alert Guild system.
+
+
+=== Version 3.0.5 ===
+Released: September 11th, 2018
+
+The AddOn's saved data structure has been completely reworked to allow for a more fluid setup. When creating Raffles, the AddOn will now detect whether a item you've entered (by shift+clicking) is Soulbound and remove it. This applies even if you have the 'Allow Invalid Items' box checked.
+
+
+=== Version 3.0.4 ===
+Released: August 13th, 2018
+
+New Feature! You can now create Lottery & Raffle profiles. The AddOn will use these settings to remember things such as Ticket Price for all future events. You can change these whenever you like, you can also copy existing profiles from your other characters.
+New Feature! You can now give tickets to all Guild Members at once! Doing so will not increase the current Jackpot.
+Fixed bug with the AddOn not correctly messaging players that haven't received their ticket information upon logging in. The Multi-Guild Roster for Multi-Guild Events is now updated upon logging in and no longer requires a reload to save. If you have 'Multi-Guild Events' and 'Toggle Chat Info' enabled, you will now receive a message once the roster has been updated.
+The AddOn has been translated to French, but until I've fixed the scaling issue it presents it's been disabled. You may enable it by changing the Locales.xml file.
+
+
+=== Version 3.0.3 ===
+Released: August 4th, 2018
+
+New Feature! You can now create Lottery & Raffle Events for multiple guilds. To do this, you must log on to each character that's in a different guild and enable the 'Multi-Guild Events' option. If your guilds span both factions you also have the option to enable Cross-Faction events, unlike the Multi-Guild setting, this option only needs to be set on the character hosting the event. If hosting a Multi-Guild Event the person receiving ticket information will have to be higher than level 20 (unless they whisper you 'lottery' or 'raffle', or do the same in Guild chat). This is a limitation brought on by the /who system.
+New Feature! You can now increase the current Lottery Jackpot without selling new tickets. Doing so will alert your guild of the change.
+Did some quality of life changes to the AddOn's loading process. Won't have to do a reload on new characters for setting changes to take effect now, now you can simply log in make your changes and log out.
+
+
+=== Version 3.0.2 ===
+Released: July 21st, 2018
+
+With Communities enabled, the mod now has the ability to create Guild Announcements in the Calendar for your events. To enable this feature, check the 'Create Calendar Events' box in the Config menu.
+
+
+=== Version 3.0.1 ===
+Released: July 18th, 2018
+
+With Communities temporarily disabled, the ability to create Guild Events was also removed. Should have another update, allowing the mod to create Guild Events for your Lottery & Raffles, once Communities has been enabled.
+Did some minor bug fixes with the Mail Scanning feature. It wouldn't correctly enter information for the mod to later use to message the player about their ticket information.
+Changed the way the mod handles whispering players information about any Lottery or Raffle events, character level will no longer be a issue.

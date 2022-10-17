@@ -1,0 +1,23 @@
+## Interface: 90002
+## Title: Guild Lottery Raffle
+## Author: Tempuseteri
+## OptDeps: Ace3, BugSack, !BugGrabber
+## Version: 3.1.25
+## DefaultState: enabled
+## X-Website: https://www.curseforge.com/wow/addons/guild-lottery
+
+## SavedVariablesPerCharacter: glrCharacter
+## SavedVariables: glrHistory, guildData
+
+
+embeds.xml
+
+Locales\Locales.xml
+
+Modules\Modules.xml
+
+GLR_UI.lua
+
+Modules\GLR_Draw.lua
+
+GuildLotteryRaffle.lua
